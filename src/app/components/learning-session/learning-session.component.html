@@ -1,0 +1,49 @@
+<h3 style="margin-left: 30px">Dodaj partię słówek</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+      <form (ngSubmit)="addWordToList()">
+        <div class="form-group">
+          <label for="ssww" style="margin-left: 30px">polski</label>
+          <input type="text" class="form-control" style="margin-left: 30px" id="ssww" required [(ngModel)]="word.polish" name="ssww">
+        </div>
+        <div class="form-group">
+          <label for="ss" style="margin-left: 30px">angielski</label>
+          <input type="text" class="form-control" style="margin-left: 30px" id="ss" required [(ngModel)]="word.english" name="ss">
+        </div>
+        <button type="submit" class="btn btn-success" style="margin-left: 30px">Dodaj słówko  do listy</button>
+        <div class="form-group">
+          <label for="ss" style="margin-left: 30px"></label>
+        </div>
+      </form>
+
+    <button type="submit" class="btn btn-success" style="margin-left: 30px">Zapisz partię słówek</button>
+  </form>
+</div>
+
+
+
+<div [hidden]="!submitted">
+  <h4>Poprawnie dodano partię słówek</h4>
+</div>
+<hr/>
+<div [hidden]="!submitted">
+
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">polski</th>
+        <th scope="col">angielski</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of learningSessionResponse.wordList">
+        <td>{{item.polish}}</td>
+        <td>{{item.english}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>

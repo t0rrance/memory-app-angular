@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="card card-container">
+
+      <img src="assets/imgs/brain.png" width="120" height="120" class="d-inline-block align-top" style="margin: auto"/>
+    <form name="form-signin" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{errorMessage}}
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':f.submitted &&!username.valid}">
+        <label for="username">Nazwa użytkownika</label>
+        <input type="text" name="username" class="form-control input-text-custom" id="username" [(ngModel)]="user.username" #username="ngModel" required/>
+        <div class="alert alert-danger" *ngIf="f.submitted && !username.valid">
+          Błedna nazwa użytkownika.
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error':f.submitted &&!password.valid}">
+        <label for="password">Hasło</label>
+        <input type="password" name="password" class="form-control input-text-custom" id="password" [(ngModel)]="user.password" #password="ngModel" required/>
+        <div class="alert alert-danger" *ngIf="f.submitted && !password.valid">
+          Hasło jest wymagane!.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin form-submit-button">Zaloguj</button>
+    </form>
+    <a [routerLink]="['/register']" class="btn btn-link">Utwórz nowe konto!</a>
+  </div>
+</div>

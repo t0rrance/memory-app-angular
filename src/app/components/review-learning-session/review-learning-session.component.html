@@ -1,0 +1,41 @@
+
+<div class="container">
+  <div class="user-container">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col col-xs-6">
+            <h3 class="panel-title">Powtórka</h3>
+          </div>
+        </div>
+      </div>
+          <div class="front">
+            {{this.index + 1}}/{{this.wordListSize - 1}}
+          </div>
+          <div class="display-4" style="margin: auto" *ngIf="isFront">
+            {{this.learningSessionResponse.wordList[this.index].polish}}
+          </div>
+          <div class="display-4"style="margin: auto" *ngIf="!isFront">
+            {{this.learningSessionResponse.wordList[this.index].english}}
+          </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <td>
+            <button type="submit" class="btn btn-warning"(click)="decrementation()" >Poprzednia</button>
+          </td>
+          <td>
+            <button type="submit" class="btn btn-success" (click)="flip()">Obróć</button>
+          </td>
+          <td>
+            <button type="submit" class="btn btn-info" (click)="incrementation()" >Następna</button>
+          </td>
+          <td>
+            <button type="submit" class="btn btn-danger" (click)="finishReview()" >Zakończ</button>
+          </td>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+

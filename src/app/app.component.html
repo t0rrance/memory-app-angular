@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a href="https://angular/io" class="navbar-brand" *ngIf="isAdmin">
+    <img src="assets/imgs/brain.png" width="30" height="30" class="d-inline-block align-top"/>
+    Memo-app
+  </a>
+  <div class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a href="/admin" class="nav-link" *ngIf="isAdmin">Użytkownicy</a>
+    </li>
+  </div>
+  <div class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a href="/learningSession" class="nav-link" *ngIf="isAdmin">Dodaj partię słówek</a>
+    </li>
+  </div>
+  <div class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a href="/reviewList" class="nav-link" *ngIf="isAdmin">Powtórka słówek</a>
+    </li>
+  </div>
+  <div class="navbar-nav ml-auto" *ngIf="!currentUser">
+    <li class="nav-item">
+      <a href="/register" class="nav-link">
+        <span class="glyphicon glyphicon-user"></span> Zarejestruj
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="/login" class="nav-link">
+        <span class="glyphicon glyphicon-log-in"></span> Zaloguj
+      </a>
+    </li>
+  </div>
+  <div class="navbar-nav ml-auto" *ngIf="currentUser">
+    <li class="nav-item">
+      <a href="/profile" class="nav-link">
+        <span class="glyphicon glyphicon-user"></span> {{currentUser.name}}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a (click)="logOut()" class="nav-link">
+        <span class="glyphicon glyphicon-log-in"></span> Wyloguj
+      </a>
+    </li>
+  </div>
+</nav>
+<router-outlet></router-outlet>
